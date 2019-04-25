@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.106
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatchingColumnsReactProyect", "MatchingColumnsReactProyect\MatchingColumnsReactProyect.csproj", "{C2D2FA24-0758-463C-BE26-F503F206F5EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MatchingColumnsReactProyect", "MatchingColumnsReactProyect\MatchingColumnsReactProyect.csproj", "{C2D2FA24-0758-463C-BE26-F503F206F5EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XUnitTestMatchingColumns", "XUnitTestMatchingColumns\XUnitTestMatchingColumns.csproj", "{D67E26FD-99EA-41C3-9934-A5F9974751FB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{C2D2FA24-0758-463C-BE26-F503F206F5EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2D2FA24-0758-463C-BE26-F503F206F5EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2D2FA24-0758-463C-BE26-F503F206F5EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D67E26FD-99EA-41C3-9934-A5F9974751FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D67E26FD-99EA-41C3-9934-A5F9974751FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D67E26FD-99EA-41C3-9934-A5F9974751FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D67E26FD-99EA-41C3-9934-A5F9974751FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
