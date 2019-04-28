@@ -10,7 +10,7 @@ export default () => (
   <Layout>
     <Route exact path='/' component={Home} />
     <Route path='/counter' component={Counter} />
-    <Route path='/informe' component={Informe} />
+    <Route path='/informe/:id?' component={Informe} />
     <Route path='/fetchdata/:startDateIndex?' component={FetchData} />
   </Layout>
 );

@@ -10,7 +10,7 @@ namespace MatchingColumnsReactProyect.Domain.Entities
     {
         public int Id { get; set; }
         public string Nombre { get; set; }
-        private ArrayList ListaDeCuadros;
+        public ArrayList ListaDeCuadros;
 
         public Informe(string nombre)
         {

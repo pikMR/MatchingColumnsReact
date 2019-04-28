@@ -8,10 +8,10 @@ namespace MatchingColumnsReactProyect.Domain.Entities
 {
     public class Cuadro
     {
-        private Dictionary<Conector, IEnumerable<Conector>> MatchConectores;
+        public Dictionary<Conector, IEnumerable<Conector>> MatchConectores;
         public string Descripcion { get; set; }
         public int Id { get; set; }
-        public string Informe { get; set; }
+        private string Informe { get; set; }
 
         /// <summary>
         /// Crea un Cuadro y lo añade a su Informe correspondiente.
@@ -50,7 +50,7 @@ namespace MatchingColumnsReactProyect.Domain.Entities
 
         public Conector GetFirstConectorDestinoDeDictionary(Conector conectorKey)
         {
-            if (conectorKey != null)
+            if (conectorKey == null)
                 throw new System.ArgumentNullException("Es necesario un conector Key en GetFirstConectorDestinoDeDictionary()");
 
             var conectorResultado = MatchConectores[conectorKey];
