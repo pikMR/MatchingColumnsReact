@@ -18,45 +18,43 @@ class Informe extends Component {
     render() {
         return (
             <div className="container">
-                <h1>{this.props.informedata.nombre}</h1>
+                <h1>{this.props.informedata.informeNombre}</h1>
                 <div className="row">
-                   {renderCuadros(this.props.informedata.listaDeCuadros)}
+                   {renderCuadros(this.props.informedata)}
                 </div>
             </div>
         );
     }
 }
 
-function renderCuadros(props) {
-    if (props != undefined) {
+function renderCuadros(informedata) {
+    if (informedata.conectores != undefined) {
         return (
-            <div class="cuadros">
-                <p>{props[0].descripcion}</p>
-                {renderConectores(props[0])}
-            </div>
-        );
-    }
-
-}
-
-function renderConectores(props) {
-    return (
-        <div class="conectores">
-            <div className="col-lg-4">
-                <a href="#" className="list-group-item active">Device Type</a>
-                <a href="#" className="list-group-item"><i className="fa fa-check"></i>Desktop</a>
-                <a href="#" className="list-group-item"><i className="fa fa-check"></i>Mobile</a>
-                <a href="#" className="list-group-item"><i className="fa fa-check"></i>Tablet</a>
+        <div>
+            <div className="col-lg-4 ">
+                    <a href="#" className="list-group-item active">{informedata.cuadroTema1}</a>
+                {
+                    informedata.conectores.map(obj =>
+                        <div key={obj.Key.Id}>
+                            <a href="#" className="list-group-item"><i className="fa fa-check"></i>{obj.Key.Datos}</a>
+                        </div>
+                    )
+                }
             </div>
             <div className="col-lg-2"></div>
-            <div className="col-lg-4">
-                <a href="#" className="list-group-item active">Device Type</a>
-                <a href="#" className="list-group-item">Mobile</a>
-                <a href="#" className="list-group-item">Desktop</a>
-                <a href="#" className="list-group-item">Tablet</a>
+            <div className="col-lg-4 ">
+                    <a href="#" className="list-group-item active">{informedata.cuadroTema2}</a>
+                {
+                    informedata.conectores.map(obj =>
+                        <div key={obj.Value[0].Id}>
+                            <a href="#" className="list-group-item"><i className="fa fa-check"></i>{obj.Value[0].Datos}</a>
+                        </div>
+                    )
+                }
             </div>
         </div>
-    );
+        );
+    }
 }
 
 export default connect(

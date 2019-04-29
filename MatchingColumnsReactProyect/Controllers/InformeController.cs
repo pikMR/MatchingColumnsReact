@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using MatchingColumnsReactProyect.Domain.Entities;
+﻿using MatchingColumnsReactProyect.Domain.Entities;
+using MatchingColumnsReactProyect.Domain.ViewEntities;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -13,19 +10,21 @@ namespace MatchingColumnsReactProyect.Controllers
     public class InformeController : Controller
     {
         [HttpGet("[action]")]
-        public Informe ObtenerInforme(int id)
+        public VMInforme ObtenerInforme(int id)
         {
             Informe Informe = new Informe("Política");
-            Cuadro cuadro = new Cuadro(Informe, new Conector("Chalet de Iglesias"), new Conector("600.000 euros"));
+            Cuadro cuadro = new Cuadro(Informe, new Conector("Chalet de Iglesias") { Id = 0 }, new Conector("600.000 euros") { Id = 1 },"Propiedades","Precio");
             cuadro.Descripcion = "Propiedades de Políticos";
-            cuadro.AddConnectores(new Conector("Felipe Gonzalez"), new Conector("Yate de lujo"));
+            cuadro.AddConnectores(new Conector("Felipe Gonzalez") { Id=2 }, new Conector("Yate de lujo") { Id=3 });
             Informe.AddCuadro(cuadro);
-            return Informe;
+            VMInforme vmodel = new VMInforme();
+
+            vmodel.InformeId = Informe.Id;
+            vmodel.InformeNombre = Informe.Nombre;
+
+            return vmodel.GetVista(cuadro);
+            //return vmodel.GetJson();
+            //return GetInformeJson(Informe);
         }
-            
-        /*public IActionResult Index()
-        {
-            return View();
-        }*/
     }
 }

@@ -8,11 +8,12 @@ export const actionCreators = {
             // Don't issue a duplicate request (we already have or are loading the requested data)
            return;
         }
-
+        
         dispatch({ type: requestInformeType, id });
         const url = `api/Informe/ObtenerInforme?id=${id}`;
         const response = await fetch(url);
-        const informedata = await response.json();
+        let informedata = await response.json();
+        informedata.conectores = JSON.parse(informedata.conectores);
         dispatch({ type: receiveInformeType, id, informedata });
     }
 };
