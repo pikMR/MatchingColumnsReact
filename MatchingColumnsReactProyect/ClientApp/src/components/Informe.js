@@ -2,6 +2,7 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { actionCreators } from '../store/Informe';
+import Cuadro from './Cuadro';
 
 class Informe extends Component {
     componentWillMount() {
@@ -16,11 +17,12 @@ class Informe extends Component {
     }
 
     render() {
+        { if (!this.props.isLoading) { <span>Loading...</span> } }
         return (
             <div className="container">
                 <h1>{this.props.informedata.informeNombre}</h1>
                 <div className="row">
-                   {renderCuadros(this.props.informedata)}
+                    {renderCuadros(this.props.informedata)}
                 </div>
             </div>
         );
@@ -30,29 +32,10 @@ class Informe extends Component {
 function renderCuadros(informedata) {
     if (informedata.conectores != undefined) {
         return (
-        <div>
-            <div className="col-lg-4 ">
-                    <a href="#" className="list-group-item active">{informedata.cuadroTema1}</a>
-                {
-                    informedata.conectores.map(obj =>
-                        <div key={obj.Key.Id}>
-                            <a href="#" className="list-group-item"><i className="fa fa-check"></i>{obj.Key.Datos}</a>
-                        </div>
-                    )
-                }
+            <div>
+                    <Cuadro keys={informedata} />
+                    <Cuadro values={informedata} />
             </div>
-            <div className="col-lg-2"></div>
-            <div className="col-lg-4 ">
-                    <a href="#" className="list-group-item active">{informedata.cuadroTema2}</a>
-                {
-                    informedata.conectores.map(obj =>
-                        <div key={obj.Value[0].Id}>
-                            <a href="#" className="list-group-item"><i className="fa fa-check"></i>{obj.Value[0].Datos}</a>
-                        </div>
-                    )
-                }
-            </div>
-        </div>
         );
     }
 }

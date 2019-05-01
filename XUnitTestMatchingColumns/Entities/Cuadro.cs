@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Newtonsoft.Json;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -6,10 +7,13 @@ namespace XUnitTestMatchingColumns.Entities
 {
     public class Cuadro
     {
-        private Dictionary<Conector, IEnumerable<Conector>> MatchConectores;
+        public Dictionary<Conector, IEnumerable<Conector>> MatchConectores;
         public string Descripcion { get; set; }
         public int Id { get; set; }
         public string Informe { get; set; }
+
+        public string Tema1 { get; set; }
+        public string Tema2 { get; set; }
 
         /// <summary>
         /// Crea un Cuadro y lo añade a su Informe correspondiente.
@@ -28,9 +32,21 @@ namespace XUnitTestMatchingColumns.Entities
         /// <param name="informe"></param>
         /// <param name="conectorKey"></param>
         /// <param name="conectorValor"></param>
-        public Cuadro(Informe informe,Conector conectorKey,Conector conectorValor) : this(informe)
+        public Cuadro(Informe informe, Conector conectorKey, Conector conectorValor) : this(informe)
         {
-            AddConnectores(conectorKey,conectorValor);
+            AddConnectores(conectorKey, conectorValor);
+        }
+
+        /// <summary>
+        /// Crea un Cuadro y Agrega 2 conectores iniciales.
+        /// </summary>
+        /// <param name="informe"></param>
+        /// <param name="conectorKey"></param>
+        /// <param name="conectorValor"></param>
+        public Cuadro(Informe informe, Conector conectorKey, Conector conectorValor, string tema1, string tema2) : this(informe, conectorKey, conectorValor)
+        {
+            Tema1 = tema1;
+            Tema2 = tema2;
         }
 
         /// <summary>
@@ -59,6 +75,11 @@ namespace XUnitTestMatchingColumns.Entities
             }
 
             return null;
+        }
+
+        public dynamic GetJsonObjects()
+        {
+            return JsonConvert.SerializeObject(MatchConectores);
         }
     }
 }

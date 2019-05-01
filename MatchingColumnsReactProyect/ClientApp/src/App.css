@@ -1,0 +1,87 @@
+﻿bo.App {
+    text-align: center;
+    width: 95%;
+    margin: 15px auto;
+}
+
+.container-drag {
+    text-align: center;
+}
+
+.wip {
+    background-color: #EEEEEE;
+    border-right: 1px dotted;
+}
+
+    .wip span {
+        position: relative;
+        float: left;
+        background: #cccccc;
+        border-radius: 0.8em;
+        -moz-border-radius: 0.8em;
+        -webkit-border-radius: 0.8em;
+        color: #ffffff;
+        display: inline-block;
+        font-weight: bold;
+        line-height: 1.6em;
+        text-align: center;
+        width: 1.6em;
+        z-index: 1;
+        margin: 10px 0px 0px 10px;
+    }
+
+.numberValues {
+    position: fixed;
+    float: left;
+    background: #cccccc;
+    border-radius: 0.8em;
+    -moz-border-radius: 0.8em;
+    -webkit-border-radius: 0.8em;
+    color: #ffffff;
+    display: inline-block;
+    font-weight: bold;
+    line-height: 1.6em;
+    text-align: center;
+    width: 1.6em;
+    z-index: 1;
+    margin: 10px 0px 0px 10px;
+}
+
+.header {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    background-color: #E0E0E0;
+    width: 100%;
+}
+
+.task-header {
+    display: inline-block;
+    background-color: skyblue;
+    width: 100%;
+    cursor: move; /* fallback if grab cursor is unsupported */
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+    
+}
+    .task-header:active {
+        border: 2px dashed #000;
+        cursor: grabbing;
+        cursor: -moz-grabbing;
+        cursor: -webkit-grabbing;
+    }
+
+.droppable {
+    background-color: #9E9E9E;
+    border-left: 1px dotted;
+}
+
+.draggable {
+    width: 100px;
+    height: 100px;
+    background-color: yellow;
+    margin: 5px auto;
+    line-height: 5em;
+}
+
