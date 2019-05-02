@@ -33,8 +33,8 @@ function renderCuadros(informedata) {
     if (informedata.conectores != undefined) {
         return (
             <div>
-                    <Cuadro keys={informedata} />
-                    <Cuadro values={informedata} />
+                <Cuadro keys={informedata} />
+                <Cuadro values={informedata} />
             </div>
         );
     }

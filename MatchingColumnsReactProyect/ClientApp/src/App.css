@@ -47,6 +47,14 @@
     margin: 10px 0px 0px 10px;
 }
 
+.numberValues.isok{
+    background-color:springgreen;
+}
+
+.numberValues.isko {
+    background-color: red;
+}
+
 .header {
     display: inline-block;
     margin: 0;
@@ -56,16 +64,20 @@
 }
 
 .task-header {
+    background-color: #f5f5f5;
     display: inline-block;
-    background-color: skyblue;
     width: 100%;
     cursor: move; /* fallback if grab cursor is unsupported */
     cursor: grab;
     cursor: -moz-grab;
     cursor: -webkit-grab;
-    
 }
-    .task-header:active {
+
+.task-header:hover {
+    background-color: skyblue !important;
+}
+   .task-header:active {
+        background-color: skyblue;
         border: 2px dashed #000;
         cursor: grabbing;
         cursor: -moz-grabbing;

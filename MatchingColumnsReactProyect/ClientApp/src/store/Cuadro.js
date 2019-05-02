@@ -1,15 +1,19 @@
-﻿const infoOKCuadroType = 'CUADRO_OK';
-const infoKOCuadroType = 'CUADRO_KO';
-const initialState = { isok: false, conectorlap: [] };
+﻿import * as utils from "../Utils.js";
 
-export const actionCreators = {
-    validaCuadro: id => async (dispatch, getState) => {
-        // comprobamos si efectivamente el cuadro es ok
-        // if(ok cuadro) { dispatch({ type: infoOKCuadroType, isok, conectorlap });  }
-        // else  { dispatch({ type: infoKOCuadroType, isok, conectorlap });  }
-        let isok = false;
-        let conectorlap = [];
-        dispatch({ type: infoOKCuadroType, isok, conectorlap });
+const infoOKCuadroType = 'CUADRO_OK';
+const infoKOCuadroType = 'CUADRO_KO';
+const initialState = { isChanged: false, arrayFails: [], isok:true };
+
+export const actionCreatorCuadro = {
+    validaCuadro: (arrayFinal,arrayOrigen) => async (dispatch, getState) => {
+        let arrayFails = utils.CompareAllValuesOfArray(arrayFinal,arrayOrigen);
+        let infoCuadroType = (arrayFails != undefined && arrayFails.length != 0) ? infoKOCuadroType : infoOKCuadroType;
+
+        // si hemos entrado, hemos hecho swap de elementos.
+        let toogleChange = initialState.isChanged ? false : true;
+        initialState.isChanged = !initialState.isChanged;
+
+        dispatch({ type: infoCuadroType, isChanged: toogleChange, arrayFails  });
     }
 };
 
@@ -19,17 +23,18 @@ export const reducer = (state, action) => {
     if (action.type === infoOKCuadroType) {
         return {
             ...state,
-            id: action.id,
-            isok: true
+            arrayFails: [],
+            isok: true,
+            isChanged:action.isChanged
         };
     }
 
     if (action.type === infoKOCuadroType) {
         return {
             ...state,
-            id: action.id,
-            cuadrodata: action.cuadrodata,
-            isok: false
+            arrayFails: action.arrayFails,
+            isok: false,
+            isChanged: action.isChanged
         };
     }
 

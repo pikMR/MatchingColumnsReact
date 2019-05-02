@@ -13,9 +13,11 @@ namespace MatchingColumnsReactProyect.Controllers
         public VMInforme ObtenerInforme(int id)
         {
             Informe Informe = new Informe("Política");
-            Cuadro cuadro = new Cuadro(Informe, new Conector("Chalet de Iglesias") { Id = 0 }, new Conector("600.000 euros") { Id = 1 },"Propiedades","Precio");
+            Cuadro cuadro = new Cuadro(Informe, new Conector("Chalet de Iglesias") { Id = 0 }, new Conector("600.000 euros") { Id = 1 },"Elemento a Valorar","Precio");
             cuadro.Descripcion = "Propiedades de Políticos";
-            cuadro.AddConnectores(new Conector("Yate de Felipe Gonzalez") { Id=2 }, new Conector("700.000 euros") { Id=3 });
+            cuadro.AddConnectores(new Conector("Fraude Fiscal Monedero") { Id=2 }, new Conector("200.000 euros") { Id=3 });
+            cuadro.AddConnectores(new Conector("Multa del PP") { Id = 4 }, new Conector("245.000 euros") { Id = 5 });
+            cuadro.AddConnectores(new Conector("Trama de los ERE") { Id = 6 }, new Conector("143 millones de euros") { Id = 7 });
             Informe.AddCuadro(cuadro);
             VMInforme vmodel = new VMInforme();
 

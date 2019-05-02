@@ -13,7 +13,9 @@ export const actionCreators = {
         const url = `api/Informe/ObtenerInforme?id=${id}`;
         const response = await fetch(url);
         let informedata = await response.json();
+        let origen = JSON.parse(informedata.conectores);
         informedata.conectores = JSON.parse(informedata.conectores);
+        informedata.origen = origen;
         dispatch({ type: receiveInformeType, id, informedata });
     }
 };
@@ -34,7 +36,7 @@ export const reducer = (state, action) => {
             ...state,
             id: action.id,
             informedata: action.informedata,
-            isLoading: false
+            isLoading: false,
         };
     }
 
